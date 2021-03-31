@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /**
+ * @param {number[][]} rooms
+ * @return {boolean}
+ */
+var canVisitAllRooms = function(rooms) {
+    const set = new Set();
+    if(!rooms||!rooms.length){
+      return false
+    }
+    const res = (i) => {
+      if(set.size===rooms.length){
+        return
+      }
+      const rs = rooms[i]
+      console.log(rooms[i],i);
+      
+      let loop = rs.length
+      while(loop){
+        loop--
+        if(set.has(rs[loop])||!rs[loop]){
+          return
+        }else{
+          set.add(rs[loop])
+          const is = rooms[rs[loop]]
+          for(let j=0;j<is.length;j++){
+            
+            res(is[j])
+          }
+        }
+      }
+    }
+    res(0)
+    return set.size===rooms.length
+};
+const test = [[1],[2],[3],[]]
+console.log(canVisitAllRooms(test));
+
+  </script>
+</body>
+</html>

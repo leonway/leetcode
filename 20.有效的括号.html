@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+//转数组
+// var isValid = function(s) {
+//     const MapObj = {
+//         "(":")",
+//         "[":"]",
+//         "{":"}"
+//     }
+//     const startKeys = Object.keys(MapObj)
+//     const endKeys = Object.values(MapObj)
+//     const queue = []
+//     const strArray = s.split('')
+//     let loop = 0
+//     while(loop<strArray.length){
+//         const cur = strArray[loop] 
+//             if(startKeys.includes(cur)){
+//                 queue.push(cur)
+//             }else if(endKeys.includes(cur)){
+//                 if(MapObj[queue[queue.length-1]]===cur){
+//                     queue.pop()
+//                 }else{
+//                     return false
+//                 }         
+//             }
+//             loop++
+//     }
+
+//     return !queue.length
+// };
+//不转数组
+// var isValid = function(s) {
+//     const MapObj = {
+//         "(":")",
+//         "[":"]",
+//         "{":"}"
+//     }
+//     const startKeys = Object.keys(MapObj)
+//     const endKeys = Object.values(MapObj)
+//     const queue = []
+//     // const strArray = s.split('')
+//     let loop = 0
+//     while(loop===s.length){
+//         const cur = s.charAt(loop)
+//         if(startKeys.includes(cur)){
+//             queue.push(cur)
+//         }else if(endKeys.includes(cur)){
+//             if(MapObj[queue[queue.length-1]]===cur){
+//                 queue.pop()
+//             }else{
+//                 return false
+//             }         
+//         }
+//         loop++
+//     }
+//     return !queue.length
+// };
+  console.log(isValid("(]"));
+  
+  </script>
+</body>
+</html>

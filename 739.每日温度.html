@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // var dailyTemperatures = function(T) {
+    //   return T.map((t,i)=>{
+    //         const nextBigIndexDiffer = T.findIndex((ti,ind)=>ti>t&&ind>i)-i
+    //         return nextBigIndexDiffer>0?nextBigIndexDiffer:0
+    //     })
+    // };
+    // var dailyTemperatures = function(T) {
+    //     return T.map((t,i)=>{
+    //             for(let j = i+1;j<T.length;j++){
+    //                 if(i===8){
+    //                   console.log(T[j],j,i,j-i);
+                      
+    //                 }
+                    
+    //                 if(T[j]>t){
+    //                     return j-i
+    //                 }
+    //             }
+    //             return 0
+    //     })
+    // };
+    // var dailyTemperatures = function(T) {
+    //     const len = T.length;
+    //     const result = new Array(len).fill(0)
+    //     for(let i = 0; i<len-1; i++){
+    //         for(let j = i+1; j<len; j++){
+    //             if(T[j]>T[i]){
+    //                 result[i] = j-i
+    //                 break
+    //             }
+    //         }
+    //     }
+    //     return result
+    //     // return T.map((t,i)=>{
+    //     //         for(let j = i+1;j<T.length;j++){
+    //     //             if(T[j]>t){
+    //     //                 return j-i
+    //     //             }
+    //     //         }
+    //     //         return 0
+    //     // })
+    // };
+    // 笨b算法 超时了。
+    // var dailyTemperatures = function(T) {
+    //     const originSorter = T.map((t,i)=>([t,i])).sort(([t1,i1],[t2,i2])=>t2-t1)
+    //     const result = new Array(T.length)
+    //     originSorter.forEach(([t,i],index)=>{
+    //       const leftSorters = originSorter.slice(0,index).filter(([ti,ii])=>ii>i).sort(([t1,i1],[t2,i2])=>i1-i2)
+    //       console.log('t',t,'i',i,'leftSorters',leftSorters,index);
+          
+    //       result[i] = !leftSorters.length?0:leftSorters[0][1]-i
+    //     })
+    //     return result       
+    // };
+    // 单调栈 单调递增
+    // var dailyTemperatures = function(T) {
+    //   const len = T.length
+    //   const queue = []
+    //   const result = new Array(len).fill(0)
+    //   T.forEach((t,i)=>{
+    //     while(queue.length&&queue[queue.length-1].t<t){
+    //         const totoal = queue.pop()
+    //         result[totoal.i] = i-total.i
+    //     }
+    //     queue.push({t,i})
+    //   })
+    //   return result
+    // }
+    // 单调栈 单调递减
+// const dailyTemperatures = (T) => {
+//   const res = new Array(T.length).fill(0)
+//   const stack = []
+//   for (let i = T.length - 1; i >= 0; i--) {
+//     while (stack.length && T[i] >= T[stack[stack.length - 1]]) {
+//       stack.pop()
+//     }
+//     if (stack.length && T[i] < T[stack[stack.length - 1]]) {
+//       res[i] = stack[stack.length - 1] - i
+//     }
+//     stack.push(i)
+//   }
+//   return res
+// }
+    const testArray = [55,38,53,81,61,93,97,32,43,78];
+    console.log(testArray,dailyTemperatures(testArray));
+    
+  </script>
+</body>
+</html>

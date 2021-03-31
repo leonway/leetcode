@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /**
+ * @param {string} s
+ * @return {string}
+ */
+// var decodeString = function(s) {
+//     return s.replace(/((\d)\[([a-zA-Z(\3)]+)\])/g,(...data)=>{
+//         let num = Number(data[2])
+//         console.log(num,data);
+        
+//         if(typeof num==='number'){
+//         let str = ''
+//         while(num){
+//           num--
+//           str+=data[3]
+//         }
+//         return str
+//         }else{
+//           return data[0]
+//         }
+//        })
+// };
+
+// var decodeString = function(s) {
+//    const stack = []
+//    let i = 0
+//    while(i<=(s.length-1)){
+//     const cur = s.charAt(i)
+//        console.log('cur',cur,'cur.match(/\d/)',cur.match(/\d/));
+//        if(cur===']'){
+//            console.log('stack',stack);
+//            const next = stack.pop()
+//            let num = Number(s.charAt(next))
+//            console.log('s.charAt(next)',s.charAt(next),'num',num);
+           
+//            let str = ''
+//            while(num){
+//                num--
+//                str += s.slice(next+2,i)
+//            }
+//            console.log('str',str,'s',s);
+           
+//            s = s.slice(0,next)+str+s.slice(i+1)
+//            i=i-1
+//            console.log('s',s,'i',i);
+//            continue
+//        }
+//        if(cur.match(/\d/)){
+//            stack.push(i)
+//        }
+//        i++
+       
+       
+//    }
+//     return s
+// };
+
+// var decodeString = function(s) {
+//    const stack = []
+//    let i = 0
+//    while(i<=(s.length-1)){
+//     let cur = s.charAt(i)
+//        console.log('cur',cur,'cur.match(/\d/)',cur.match(/\d/));
+//        if(cur===']'){
+//            console.log('stack',stack);
+//            const {start,end,num} = stack.pop()
+//            console.log('num',num);
+//            const str = new Array(num).fill(s.slice(end+2,i)).join('')
+//            console.log('str',str,'s',s);
+           
+//            s = s.slice(0,start)+str+s.slice(i+1)
+//            i = start
+//            console.log('s',s,'i',i);
+//            continue
+//        }
+//         if(cur.match(/\d/)){
+//           let numstr = ''
+//           while(s.charAt(i).match(/\d/)){
+//               numstr+=s.charAt(i)
+//               i++
+//           }
+//           console.log(numstr,i);
+          
+//           stack.push({
+//             start:i-(numstr.length-1)-1,
+//             end:i-1,
+//             num:Number(numstr)
+//           })
+//         }else{
+//           i++
+//         }
+//    }
+//     return s
+// };
+//优化版
+// var decodeString = function(s) {
+//    const stack = []
+//    let num = '';
+//    let i = 0
+//    while(i<=(s.length-1)){
+//     let cur = s.charAt(i)
+
+//        if(!isNaN(cur)){
+//            num += cur
+//            i++
+//            continue
+//        }else if(cur==='['){
+//            stack.push({
+//                num,
+//                start:i
+//            })
+//            num = ''
+//            i++
+//            continue
+//        }else if(cur==="]"){
+//            const { start, num } = stack.pop()
+//           //  const str = new Array(Number(num)).fill(s.slice(start+1,i)).join('')
+//            const str = s.slice(start+1,i).repeat(num)
+//            const len = num.length
+            
+//            s = s.slice(0,start-len)+str+s.slice(i+1)
+//            i = start-len+str.length
+//            continue
+//        }else{
+//            i++
+//        }
+//    }
+//     return s
+// };
+
+// var decodeString = function(s) {
+//    const stack = []
+//    let num = '';
+//    let str = '';
+//    for(let cur of s){
+//        if(cur>=0){
+//            num +=cur
+//        }else if(cur==='['){
+//            stack.push({
+//                num,
+//                str
+//            })
+//            num=''
+//            str=''
+//        }else if(cur===']'){
+//            const data = stack.pop()
+//            str = data.str+str.repeat(data.num) 
+//        }else{
+//            str +=cur
+//        }
+//    }
+//     return str
+// };
+
+// let v = "3[z]2[2[y]pq4[2[jk]e1[f]]]ef"
+let v = "3[a]2[bc]"
+console.log(decodeString(v))
+  </script>
+</body>
+</html>

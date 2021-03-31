@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+//超时
+// var findTargetSumWays = function(nums, S) {
+//     let i = 0
+//     const queue = []
+//     let loop = 0
+//     while(loop<=nums.length-1){
+//         let times = queue.length
+//         if(times===0){
+//           queue.push(nums[loop])
+//           queue.push(Number("-"+nums[loop]))
+//         }else{
+//             while(times){
+//               times--
+//               const cur = queue.shift()
+//               queue.push(cur-Number(nums[loop]))
+//               queue.push(cur+Number(nums[loop]))
+//           }
+//         }
+//         loop++
+//     }
+//     let queuetimes = queue.length
+//     while(queuetimes){
+//         queuetimes--
+//         queue[queuetimes]===S&&i++
+//     }
+//     return i
+// };
+
+var findTargetSumWays = function(nums, S) {
+    let n = 0;
+    const loop = (ids,num)=>{
+      if(ids<=nums.length-1){
+        loop(ids+1,num+nums[ids])
+        loop(ids+1,num-nums[ids])
+      }else{
+        num===S&&n++
+      }
+    }
+    loop(0,0)
+    return n
+};
+
+const test = [1,1,1,1,1]
+const S = 3
+console.log(findTargetSumWays(test,S));
+
+  </script>
+</body>
+</html>

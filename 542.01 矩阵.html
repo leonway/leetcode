@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // var updateMatrix = function(matrix) {
+    //     const m = matrix&&matrix.length
+    //     if(!m){
+    //         return null
+    //     }
+    //     const n = matrix[0].length
+    //     if(!n){
+    //         return []
+    //     }
+    //     const isRight = (x,y)=>(!(x<0||x>=m||y<0||y>=n))
+        
+    //     for(let i=0;i<m;i++){
+    //         for(let j=0;j<n;j++){
+    //             if(matrix[i][j]===1){
+    //               let steps = 0
+    //               const bfs = (srcs,stepss)=>{
+    //                 const set = new Set()
+    //                 for(let str of srcs){
+    //                   let [x,y] = str.split('*')
+    //                   x = Number(x)
+    //                   y = Number(y)
+    //                   if(matrix[x][y]===0){
+    //                     steps = stepss
+    //                     return 
+    //                   }else{
+    //                     isRight(x-1,y)&&set.add(`${x-1}*${y}`)
+    //                     isRight(x+1,y)&&set.add(`${x+1}*${y}`)
+    //                     isRight(x,y-1)&&set.add(`${x}*${y-1}`)
+    //                     isRight(x,y+1)&&set.add(`${x}*${y+1}`)
+    //                   }
+    //                 }
+    //                 bfs(set,stepss+1)
+    //               }
+    //                 bfs(new Set([i+"*"+j]),0)
+    //                 matrix[i][j] = steps
+    //             }
+    //         }
+    //     }
+    //     return matrix
+    // };
+
+    // var updateMatrix = function(matrix) {
+    //     const m = matrix&&matrix.length
+    //     if(!m){
+    //         return null
+    //     }
+    //     const n = matrix[0].length
+    //     if(!n){
+    //         return []
+    //     }
+    //     const isRight = (x,y)=>(!(x<0||x>=m||y<0||y>=n))
+    //     const set = new Set()
+    //     for(let i=0;i<m;i++){
+    //         for(let j=0;j<n;j++){
+    //             if(matrix[i][j]===1){
+    //               let steps = 0
+    //               const bfs = (srcs,stepss)=>{
+    //                 const map = new Map()
+    //                 for(let [key,[x,y]] of srcs){
+    //                   if(matrix[x][y]===0){
+    //                     set.add(key)
+    //                     steps = stepss
+    //                     return 
+    //                   }
+    //                 }
+    //                  for(let [key,[x,y]] of srcs){
+    //                     if(set.has(`${x-1}*${y}`)){
+    //                         steps = stepss+1
+    //                         return 
+    //                     }
+    //                     isRight(x-1,y)&&!map.get(`${x-1}*${y}`)&&map.set(`${x-1}*${y}`,[x-1,y])
+    //                      if(set.has(`${x+1}*${y}`)){
+    //                         steps = stepss+1
+    //                         return 
+    //                     }
+    //                     isRight(x+1,y)&&!map.get(`${x+1}*${y}`)&&map.set(`${x+1}*${y}`,[x+1,y])
+    //                      if(set.has(`${x}*${y-1}`)){
+    //                         steps = stepss+1
+    //                         return 
+    //                     }
+    //                     isRight(x,y-1)&&!map.get(`${x}*${y-1}`)&&map.set(`${x}*${y-1}`,[x,y-1])
+    //                      if(set.has(`${x}*${y+1}`)){
+    //                         steps = stepss+1
+    //                         return 
+    //                     }
+    //                     isRight(x,y+1)&&!map.get(`${x}*${y+1}`)&&map.set(`${x}*${y+1}`,[x,y+1])
+                      
+    //                  }
+    //                 bfs(map,stepss+1)
+    //               }
+    //                 bfs(new Map([[i+"*"+j,[i,j]]]),0)
+    //                 matrix[i][j] = steps
+    //             }
+    //         }
+    //     }
+    //     return matrix
+    // };
+
+    // var updateMatrix = function(matrix) {
+    //     const m = matrix&&matrix.length
+    //     if(!m){
+    //         return null
+    //     }
+    //     const n = matrix[0].length
+    //     if(!n){
+    //         return []
+    //     }
+    //     const isRight = (x,y)=>(!(x<0||x>=m||y<0||y>=n))
+    //     for(let i=0;i<m;i++){
+    //         for(let j=0;j<n;j++){
+    //             if(matrix[i][j]===1){
+    //               let steps = 0
+    //               const bfs = (srcs,stepss)=>{
+    //                 const map = new Map()
+    //                 for(let [key,[x,y]] of srcs){
+    //                   if(matrix[x][y]===0){
+    //                       // zero.add(key)
+    //                     steps = stepss
+    //                     return 
+    //                   }
+    //                 }
+    //                 for(let [key,[x,y]] of srcs){
+    //                     isRight(x-1,y)&&map.set(`${x-1}*${y}`,[x-1,y])
+    //                     isRight(x+1,y)&&map.set(`${x+1}*${y}`,[x+1,y])
+    //                     isRight(x,y-1)&&map.set(`${x}*${y-1}`,[x,y-1])
+    //                     isRight(x,y+1)&&map.set(`${x}*${y+1}`,[x,y+1])
+    //                 }
+    //                 bfs(map,stepss+1)
+    //               }
+    //                 bfs(new Map([[i+"*"+j,[i,j]]]),0)
+    //                 matrix[i][j] = steps
+    //             }
+    //         }
+    //     }
+    //     return matrix
+    // };
+
+    // 多源BFS
+    // var updateMatrix = function(matrix) {
+    //     const m = matrix&&matrix.length
+    //     if(!m){
+    //         return null
+    //     }
+    //     const n = matrix[0].length
+    //     if(!n){
+    //         return []
+    //     }
+    //     let ans = new Array(m).fill(0)
+        
+    //     ans = ans.map(x=>new Array(n).fill(-1))
+    //     const queue = []
+        
+    //     for(let i=0;i<m;i++){
+    //         for(let j=0;j<n;j++){
+    //             if(matrix[i][j]===0){
+    //                 ans[i][j] = 0
+    //                 queue.push([i,j])
+    //             }
+    //         }
+    //     }
+      
+    //     let dist = 0
+    //     while(queue.length){
+    //         dist++
+    //         let len = queue.length
+    //         while(len){
+    //             len--
+    //             const cur = queue.shift()
+    //             if(cur[0]+1<m&&ans[cur[0]+1][cur[1]]===-1){
+    //                 ans[cur[0]+1][cur[1]]=dist
+    //                 queue.push([cur[0]+1,cur[1]])
+    //             }
+    //             if(cur[0]-1>=0&&ans[cur[0]-1][cur[1]]===-1){
+    //                 ans[cur[0]-1][cur[1]]=dist
+    //                 queue.push([cur[0]-1,cur[1]])
+    //             }
+    //             if(cur[1]+1<n&&ans[cur[0]][cur[1]+1]===-1){
+    //                 ans[cur[0]][cur[1]+1]=dist
+    //                 queue.push([cur[0],cur[1]+1])
+    //             }
+    //             if(cur[1]-1>=0&&ans[cur[0]][cur[1]-1]===-1){
+    //                 ans[cur[0]][cur[1]-1]=dist
+    //                 queue.push([cur[0],cur[1]-1])
+    //             }
+    //         }
+    //     }
+      
+    //     return ans
+    // };
+
+//db
+//     var updateMatrix = function(matrix) {
+//     if(!matrix.length || !matrix[0].length) return null;
+
+//     let n = matrix.length;
+//     let m = matrix[0].length;
+//     let ans = new Array(n);
+//     for(let i = 0; i < n; i++) ans[i] = new Array(m).fill(n+m);
+
+//     for(let i = 0; i < n; i++)
+//         for(let j = 0; j < m; j++)
+//             if(matrix[i][j] === 0) ans[i][j] = 0;
+    
+//     for(let i = 0; i < n; i++)
+//         for(let j = 0; j < m; j++) {
+//             if(i-1 >= 0) ans[i][j] = Math.min(ans[i][j], ans[i-1][j]+1);
+//             if(j-1 >= 0) ans[i][j] = Math.min(ans[i][j], ans[i][j-1]+1);
+//         }   
+    
+//     for(let i = n-1; i >= 0; i--)
+//         for(let j = m -1 ; j >= 0; j--){
+//             if(i+1 < n) ans[i][j] = Math.min(ans[i][j], ans[i+1][j]+1);
+//             if(j+1 < m) ans[i][j] = Math.min(ans[i][j], ans[i][j+1]+1);
+//         }
+
+//     return ans;
+
+// };
+
+// 作者：bruceyuj
+// 链接：https://leetcode-cn.com/problems/01-matrix/solution/bao-li-duo-yuan-bfsdpdpyou-hua-dai-zheng-ming-by-b/
+// 来源：力扣（LeetCode）
+// 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+    // const test = [
+    //               [0,0,0],
+    //               [0,1,0],
+    //               [1,1,1]
+    //              ]
+    const test = [[0,1,0],[0,1,0],[0,1,0],[0,1,0],[0,1,0]]
+                 
+    console.log(updateMatrix(test));
+    
+  </script>
+</body>
+</html>

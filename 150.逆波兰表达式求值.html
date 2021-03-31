@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+var evalRPN = function(tokens) {
+    const stack = []
+    tokens.forEach(t=>{
+        if(!["+","-","*","/"].includes(t)){
+           stack.push(parseInt(t,10))
+        }else{
+           const second = stack.pop()
+           const first = stack.pop()
+           let res = null
+           switch(t){
+             case '+':
+             res = first + second;
+             break;
+             case '-':
+             res = first - second;
+             break;
+             case '*':
+             res = first * second;
+             break;
+             case '/':
+             res = parseInt(first / second);
+             break;
+             default:
+             break;
+           }
+           stack.push(res)
+        }
+    })
+    return stack[0]
+};
+const test = ["4","-2","/","2","-3","-","-"]
+console.log(evalRPN(test));
+
+
+  </script>
+</body>
+</html>

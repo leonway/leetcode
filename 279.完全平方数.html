@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    /**
+ * @param {number} n
+ * @return {number}
+ */
+//单向队列
+// var numSquares = function(n) {
+//     const allSquares = getAllSquares(n)
+//     console.log(allSquares);
+    
+//     if(allSquares.has(n)){
+//         return 1   
+//     }
+//     let step = 2
+//     let queue = new Set()
+//     allSquares.forEach(que=>queue.add(n-que))
+    
+//     while(step!==n){
+//       console.log(queue);
+      
+//         let thisSet = new Set()
+//         for(let cur of queue){
+//             if(allSquares.has(cur)){
+//                 return step
+//             }
+//             allSquares.forEach(que=>{
+//                 cur-que>0&&thisSet.add(cur-que)
+//             })
+//         }
+//         step++
+//         queue = thisSet    
+//     }
+//     return step
+// };
+
+//双向队列
+// var numSquares = function(n) {
+//   const allSquares = getAllSquares(n)
+//   if(allSquares.has(n)){
+//     return 1
+//   }
+//   let headQueue = new Set()
+//   allSquares.forEach(que=>headQueue.add(n-que))
+//   let tailQueue = getAllSquares(n)
+//   let steps = 2
+//   while(headQueue.size){
+//     const thisSet = new Set()
+//     for(let cur of headQueue){
+//       if(tailQueue.has(cur)){
+//         return steps
+//       }
+
+//       if(steps%2){
+//         allSquares.forEach(tail=>{
+//           cur+tail<n&&thisSet.add(tail+cur)
+//         })
+//       }else{
+//         allSquares.forEach(tail=>{
+//           cur-tail>0&&thisSet.add(cur-tail)
+//         })
+//       }
+
+//       headQueue = tailQueue
+//       tailQueue = thisSet
+//       steps++
+//     }
+//   }
+//   return steps
+// }
+
+// const isSquare = (num)=>{
+//     return /(^[1-9]\d*$)/.test(Math.sqrt(num))
+// }
+
+// const getAllSquares = (n)=>{
+//     let tem = n,
+//         set = new Set()
+//     while(tem){
+//         isSquare(tem)&&set.add(tem)
+//         tem--
+//     }
+//     return set
+// }
+
+    /**
+ * @param {number} n
+ * @return {number}
+ */
+// 单向队列-
+// var numSquares = function(n) {
+//     const nums = []
+//     let base = 1
+//     while(true){
+//       const num = Math.pow(base,2)
+//       if(num===n){
+//         return 1
+//       }
+//       if(num<n){
+//         nums.push(num)
+//       }else{
+//         break
+//       }
+//       base++
+//     }
+//     const allSquares = new Set(nums)
+//     let step = 2
+//     let queue = new Set(nums.map(num=>n-num))
+    
+//     while(step!==n){
+//         let thisSet = new Set()
+//         for(let cur of queue){
+//             if(allSquares.has(cur)){
+//                 return step
+//             }
+//             allSquares.forEach(que=>{
+//                 cur-que>0&&thisSet.add(cur-que)
+//             })
+//         }
+//         step++
+//         queue = thisSet    
+//     }
+//     return step
+// };
+
+//双向队列
+// var numSquares = function(n) { 
+//     const nums = []
+//     let base = 1
+//     while(true){
+//       const num = Math.pow(base,2)
+//       if(num===n){
+//         return 1
+//       }
+//       if(num<n){
+//         nums.push(num)
+//       }else{
+//         break
+//       }
+//       base++
+//     }
+//   const allSquares = new Set(nums)
+//   let headQueue = new Set(nums.map(num=>n-num))
+//   let tailQueue = allSquares
+//   let steps = 2
+//   while(headQueue.size){
+//     const thisSet = new Set()
+//     for(let cur of headQueue){
+//       if(tailQueue.has(cur)){
+//         return steps
+//       }
+
+//       if(steps%2){
+//         allSquares.forEach(tail=>{
+//           cur+tail<n&&thisSet.add(tail+cur)
+//         })
+//       }else{
+//         allSquares.forEach(tail=>{
+//           cur-tail>0&&thisSet.add(cur-tail)
+//         })
+//       }
+//     }
+//       headQueue = tailQueue
+//       tailQueue = thisSet
+//       steps++
+//   }
+//   return steps
+// }
+
+// 动态规划
+// var numSquares = function(n) { 
+//   const result = new Array(n+1).fill(0).map((d,i)=>i)
+
+//   for(let i = 1; i <= n; i++){
+//     for(let j = 1; i-j*j >= 0; j++){
+//       result[i] = Math.min(result[i],result[i-j*j]+1)
+//     }
+//   }  
+//   console.log(result);
+  
+//   return result[n]
+// }
+console.log(numSquares(15));
+
+
+  </script>
+</body>
+</html>
